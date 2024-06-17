@@ -5,6 +5,8 @@ struct Point
     y::Int32
 end
 
+println("Type number to start with: ")
+
 global START_NUMBER = parse(Int32, readline())
 global steps = 1
 global points = []
