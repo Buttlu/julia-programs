@@ -43,6 +43,7 @@ function performCalc(START_NUMBER)
     local points = []
     local yCoords = []
     push!(points, Point(steps, START_NUMBER))
+
     while true
         steps += 1
         last_point = points[size(points, 1)]
@@ -53,6 +54,7 @@ function performCalc(START_NUMBER)
             break
         end
     end
+
     # save all the y-coords to a different array to use in the scatter function later
     foreach(p -> push!(yCoords, p.y), points)
     return points, yCoords, steps
@@ -61,7 +63,6 @@ end
 function drawGraph()
     START_NUMBER = getStartNumber()
     points, yCoords, steps = performCalc(START_NUMBER)
-
 
     gr()
     p = Plots.plot(scatter!(1:steps, yCoords, mc=:green, ms=5, ma=1))
@@ -78,7 +79,6 @@ function drawGraph()
     xlabel!("x")
     ylabel!("y")
     display(p)
-
 
     println("Press any key to continue...")
     readline()
